@@ -1,0 +1,29 @@
+{
+  "name": "scrum-organizer",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:hitaloss/scrum-organizer.git",
+  "author": "hitalo <hitalo.2014.hs@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.1.0",
+    "typescript": "^5.9.2"
+  },
+  "scripts": {
+    "dev": "ts-node-dev --ignore-watch node_modules src/app.ts",
+    "typeorm": "typeorm-ts-node-commonjs"
+  },
+  "dependencies": {
+    "class-transformer": "^0.5.1",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "express-async-errors": "^3.1.1",
+    "pg": "^8.16.3",
+    "reflect-metadata": "^0.2.2",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "tsc": "^2.0.4",
+    "typeorm": "^0.3.25"
+  }
+}
