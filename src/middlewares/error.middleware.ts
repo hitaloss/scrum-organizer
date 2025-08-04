@@ -12,7 +12,6 @@ export const errorMiddleware = (
       status: "error",
       code: err.statusCode,
       message: err.message,
-      log: err,
     });
   }
 

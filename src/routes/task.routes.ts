@@ -8,8 +8,6 @@ import deleteTaskController from "../controllers/tasks/deleteTask.controller";
 const routes = Router();
 
 export function taskRoutes() {
-  console.log("chegou em routes");
-
   routes.post("", createTaskController);
   routes.get("", readTasksController);
   routes.patch("/:id", updateTaskController);
