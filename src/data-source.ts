@@ -18,7 +18,11 @@ export const AppDataSource = new DataSource({
       rejectUnauthorized: false,
     },
   },
-  entities: [isProd ? "dist/entities/*.js" : "src/entities/*.ts"],
+  entities: [
+    process.env.NODE_ENV === "production"
+      ? "dist/entities/*.js"
+      : "src/entities/*.ts",
+  ],
   migrations: [isProd ? "dist/migrations/*.js" : "src/migrations/*.ts"],
 });
 
