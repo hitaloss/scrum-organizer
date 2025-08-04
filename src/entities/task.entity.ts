@@ -1,8 +1,8 @@
 import { PrimaryGeneratedColumn, Column, Entity } from "typeorm";
-import { uuid } from "uuidv4";
+import { v4 } from "uuid";
 
 @Entity("task")
-export class Ingredients {
+export class Task {
   @PrimaryGeneratedColumn("uuid")
   readonly id: string;
 
@@ -28,6 +28,6 @@ export class Ingredients {
   updatedDate: string;
 
   constructor() {
-    if (!this.id) this.id = uuid();
+    if (!this.id) this.id = v4();
   }
 }
