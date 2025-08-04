@@ -1,25 +1,13 @@
 import { DataSource } from "typeorm";
-import { AppError } from "./errors/appError";
-require("dotenv").config();
-
-if (
-  !process.env.POSTGRES_USER ||
-  !process.env.POSTGRES_PWD ||
-  !process.env.POSTGRES_DB
-) {
-  throw new AppError(
-    511,
-    "PostgreSQL connection configuration is incomplete. Please provide user, password and database name."
-  );
-}
+import "dotenv/config";
 
 export const AppDataSource = new DataSource({
   type: "postgres",
   host: "localhost",
   port: 5432,
-  username: process.env.POSTGRES_USER!,
-  password: process.env.POSTGRES_PWD!,
-  database: process.env.POSTGRES_DB!,
+  username: process.env.POSTGRESQL_USER!,
+  password: process.env.POSTGRESQL_PASSWORD!,
+  database: process.env.POSTGRESQL_DB!,
   synchronize: false,
   logging: true,
   entities: ["src/entities/*.ts"],
