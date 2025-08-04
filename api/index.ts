@@ -1,2 +1,2 @@
-import { appRoutes as app } from "../src/routes";
-export default app;
+import { appRoutes } from "../src/routes";
+export default appRoutes;
