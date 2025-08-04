@@ -18,6 +18,9 @@
   "scripts": {
     "dev": "ts-node-dev --ignore-watch node_modules src/app.ts",
     "typeorm": "typeorm-ts-node-commonjs",
+    "migration:generate": "yarn typeorm migration:generate src/migrations/initialMigration -d src/data-source.ts",
+    "migration:run": "yarn typeorm migration:run -d src/data-source.ts",
+    "migration:create": "yarn typeorm migration:create src/migrations/initialMigration",
     "build": "tsc"
   },
   "dependencies": {
@@ -30,6 +33,7 @@
     "jsonwebtoken": "^8.5.1",
     "pg": "^8.7.3",
     "reflect-metadata": "^0.1.13",
+    "sqlite3": "^5.1.7",
     "ts-node": "^10.9.1",
     "typeorm": "^0.3.6",
     "uuidv4": "^6.2.13"

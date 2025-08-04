@@ -3,28 +3,30 @@ import "dotenv/config";
 
 export const AppDataSource = new DataSource({
   type: "postgres",
-  host: process.env.POSTGRESQL_HOST!,
-  port: 5432,
-  username: process.env.POSTGRESQL_USER!,
-  password: process.env.POSTGRESQL_PASSWORD!,
-  database: process.env.POSTGRESQL_DB!,
+  host: process.env.POSTGRESQL_HOST,
+  port: Number(process.env.POSTGRESQL_PORT || 5432),
+  username: process.env.POSTGRESQL_USER,
+  password: process.env.POSTGRESQL_PASSWORD,
+  database: process.env.POSTGRESQL_DB,
   synchronize: false,
   logging: true,
-  entities: ["dist/entities/*.js"],
-  migrations: ["dist/migrations/*.js"],
+  ssl: true,
+  extra: {
+    ssl: {
+      rejectUnauthorized: false,
+    },
+  },
+  entities: [
+    process.env.NODE_ENV === "production"
+      ? "dist/entities/*.js"
+      : "src/entities/*.ts",
+  ],
+  migrations: [
+    process.env.NODE_ENV === "production"
+      ? "dist/migrations/*.js"
+      : "src/migrations/*.ts",
+  ],
 });
-// export const AppDataSource = new DataSource({
-//   type: "postgres",
-//   host: "localhost",
-//   port: 5432,
-//   username: process.env.POSTGRESQL_USER!,
-//   password: process.env.POSTGRESQL_PASSWORD!,
-//   database: process.env.POSTGRESQL_DB!,
-//   synchronize: false,
-//   logging: true,
-//   entities: ["src/entities/*.ts"],
-//   migrations: ["src/migrations/*.ts"],
-// });
 
 AppDataSource.initialize()
   .then(() => {
